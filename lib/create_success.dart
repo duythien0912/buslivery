@@ -24,6 +24,7 @@ class CreateSuccessPage extends StatelessWidget {
                 ),
               ),
               Container(
+                height: 50,
                 width: double.infinity,
                 child: FlatButton(
                   color: Color.fromRGBO(

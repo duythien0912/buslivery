@@ -72,8 +72,8 @@ class _MapWidgetState extends State<MapWidget> {
   Future<void> _createMarkerImageFromAsset(BuildContext context) async {
     if (_markerIcon == null) {
       final ImageConfiguration imageConfiguration =
-          createLocalImageConfiguration(context, size: Size.square(50));
-      BitmapDescriptor.fromAssetImage(imageConfiguration, 'assets/busstop2.jpg')
+          createLocalImageConfiguration(context);
+      BitmapDescriptor.fromAssetImage(imageConfiguration, 'assets/lock.jpg')
           .then(_updateBitmap);
       print("update marker");
     }

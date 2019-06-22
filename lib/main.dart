@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'create_order_page.dart';
+import 'create_success.dart';
 
 void main() {
   runApp(
@@ -111,136 +112,215 @@ class HomePage extends StatelessWidget {
     return Container(
       color: Color.fromRGBO(240, 240, 240, 1),
       child: SafeArea(
-        child: ListView.builder(
-          itemCount: 6,
-          itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: const EdgeInsets.only(
-                top: 12.0,
-                bottom: 12.0,
-                left: 10,
-                right: 10,
+        child: new ListOrder(),
+      ),
+    );
+  }
+}
+
+class ListOrder extends StatelessWidget {
+  const ListOrder({
+    Key key,
+    this.isView = true,
+  }) : super(key: key);
+  final bool isView;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: 6,
+      itemBuilder: (BuildContext context, int index) {
+        return Padding(
+          padding: const EdgeInsets.only(
+            top: 12.0,
+            bottom: 12.0,
+            left: 10,
+            right: 10,
+          ),
+          child: GestureDetector(
+            onTap: () {
+              if (!isView) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CreateSuccessPage(),
+                  ),
+                );
+              }
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                      color: Color(0x80DCE7FA),
+                      offset: Offset(0.0, 2.0),
+                      blurRadius: 8.0,
+                      spreadRadius: 0.0),
+                ],
               ),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  color: Colors.white,
-                ),
-                width: double.infinity,
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "21290129",
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
+              width: double.infinity,
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "21290129",
+                    style: TextStyle(
+                      fontSize: 16,
                     ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    "Hàng dễ vỡ xin nhẹ tay",
+                    style: TextStyle(
+                      fontSize: 13,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 1,
+                    color: Colors.black12,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Text(
+                        "Điện thoại iphone 6",
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "x1",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.black45,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Text(
+                        "Điện thoại iphone 7",
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "x2",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.black45,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 1,
+                    color: Colors.black12,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text("12.000đ"),
+                      Text(
+                        "23.07.2019 02:10 AM",
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
+                      ),
+                    ],
+                  ),
+                  if (isView)
                     SizedBox(
                       height: 5,
                     ),
-                    Text(
-                      "Hàng dễ vỡ xin nhẹ tay",
-                      style: TextStyle(
-                        fontSize: 13,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
+                  if (isView)
                     Container(
                       width: double.infinity,
                       height: 1,
                       color: Colors.black12,
                     ),
+                  if (isView)
                     SizedBox(
                       height: 5,
                     ),
+                  if (isView)
                     Row(
-                      children: <Widget>[
-                        Text(
-                          "Điện thoại iphone 6",
-                          style: TextStyle(
-                            fontSize: 13,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          "x1",
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.black45,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          "Điện thoại iphone 7",
-                          style: TextStyle(
-                            fontSize: 13,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          "x2",
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.black45,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Container(
-                      width: double.infinity,
-                      height: 1,
-                      color: Colors.black12,
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text("12.000đ"),
-                        Text(
-                          "23.07.2019 02:10 AM",
-                          style: TextStyle(
-                            fontSize: 13,
+                        Container(
+                          height: 24,
+                          width: 52,
+                          child: FlatButton(
+                            padding: const EdgeInsets.all(0),
+                            color: Colors.redAccent,
+                            child: Text(
+                              "Hủy",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            onPressed: () {},
+                          ),
+                        ),
+                        Container(
+                          height: 24,
+                          width: 52,
+                          child: FlatButton(
+                            padding: const EdgeInsets.all(0),
+                            color: Color.fromRGBO(57, 48, 216, 1),
+                            child: Text(
+                              "Xem",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CreateSuccessPage(),
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ],
-                    ),
-                    // SizedBox(
-                    //   height: 5,
-                    // ),
-                    // Container(
-                    //   width: double.infinity,
-                    //   height: 1,
-                    //   color: Colors.black12,
-                    // ),
-                    // SizedBox(
-                    //   height: 5,
-                    // ),
-                  ],
-                ),
+                    )
+                ],
               ),
-            );
-          },
-        ),
-      ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
@@ -251,8 +331,8 @@ class OrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-        child: Text("OrderPage"),
+      child: SafeArea(
+        child: new ListOrder(isView: false),
       ),
     );
   }
