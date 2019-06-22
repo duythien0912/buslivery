@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import './presentation/custom_icons_icons.dart';
-import 'widget/app_bar.dart';
+
+import 'create_order_page.dart';
 
 void main() {
   runApp(
@@ -46,12 +46,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _currentIndex = 0;
   final List<Widget> _children = [
     HomePage(),
     OrderPage(),
     UserPage(),
   ];
+
+  int _currentIndex = 0;
 
   void onTabTapped(int index) {
     setState(() {
@@ -136,57 +137,6 @@ class UserPage extends StatelessWidget {
     return Container(
       child: Center(
         child: Text("UserPage"),
-      ),
-    );
-  }
-}
-
-class CreateNewOrder extends StatelessWidget {
-  const CreateNewOrder({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: SafeArea(child: Text("Tạo vận đơn")),
-        backgroundColor: Colors.white,
-        leading: SafeArea(child: BackButton()),
-      ),
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: SingleChildScrollView(child: Text('CreateNewOrder')),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 8.0),
-              child: FlatButton(
-                textColor: Colors.indigo[900],
-                color: Colors.yellow,
-                onPressed: () {
-                  Navigator.maybePop(
-                    context,
-                  );
-                },
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      height: 48,
-                      width: double.infinity,
-                      alignment: Alignment.center,
-                      child: Text(
-                        "Tạo đơn",
-                        style: TextStyle(fontSize: Dimens.font_sp18),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
       ),
     );
   }
