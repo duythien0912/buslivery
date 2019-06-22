@@ -109,8 +109,137 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-        child: Text("HomePage"),
+      color: Color.fromRGBO(240, 240, 240, 1),
+      child: SafeArea(
+        child: ListView.builder(
+          itemCount: 6,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: const EdgeInsets.only(
+                top: 12.0,
+                bottom: 12.0,
+                left: 10,
+                right: 10,
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
+                  color: Colors.white,
+                ),
+                width: double.infinity,
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "21290129",
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "Hàng dễ vỡ xin nhẹ tay",
+                      style: TextStyle(
+                        fontSize: 13,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 1,
+                      color: Colors.black12,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          "Điện thoại iphone 6",
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          "x1",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black45,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          "Điện thoại iphone 7",
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          "x2",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black45,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 1,
+                      color: Colors.black12,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text("12.000đ"),
+                        Text(
+                          "23.07.2019 02:10 AM",
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                    // SizedBox(
+                    //   height: 5,
+                    // ),
+                    // Container(
+                    //   width: double.infinity,
+                    //   height: 1,
+                    //   color: Colors.black12,
+                    // ),
+                    // SizedBox(
+                    //   height: 5,
+                    // ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
