@@ -2,9 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 import 'create_order_page.dart';
 import 'create_success.dart';
+import 'model/bus_app_model.dart';
 
 void main() {
   runApp(
@@ -34,7 +36,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.yellow,
         pageTransitionsTheme: PageTransitionsTheme(builders: _defaultBuilders),
       ),
-      home: MyHomePage(),
+      home: MultiProvider(providers: [
+        ChangeNotifierProvider(builder: (_) => BusAppAppModel()),
+      ], child: MyHomePage()),
     );
   }
 }
@@ -63,6 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final BusAppAppModel busModel = Provider.of<BusAppAppModel>(context);
+
     return Scaffold(
       body: _children[_currentIndex],
       floatingActionButton: FloatingActionButton(
@@ -73,6 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
               builder: (context) => CreateNewOrder(),
             ),
           );
+          busModel.setShowBusItem(true);
         },
         child: Icon(Icons.add),
       ),
@@ -138,8 +145,26 @@ class ListOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final BusAppAppModel busModel = Provider.of<BusAppAppModel>(context);
+
     return ListView(
       children: <Widget>[
+        if (isView)
+          Container(
+            padding: EdgeInsets.only(top: 15),
+            // color: Colors.white,
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 10,
+                ),
+                Image.asset(
+                  "assets/vnpostlogo2.png",
+                  height: 42,
+                ),
+              ],
+            ),
+          ),
         if (isView)
           Padding(
             padding: const EdgeInsets.only(
@@ -150,7 +175,8 @@ class ListOrder extends StatelessWidget {
             ),
             child: Image.asset("assets/qc.jpg"),
           ),
-        ItemOrderList(isView: isView),
+        if (busModel.isShow == true)
+          ItemOrderList(isView: isView),
         // ItemOrderList(isView: isView),
         // ItemOrderList(isView: isView),
         // ItemOrderList(isView: isView),
@@ -234,7 +260,7 @@ class ItemOrderList extends StatelessWidget {
               Row(
                 children: <Widget>[
                   Text(
-                    "Điện thoại iphone 6",
+                    "Bến xe 1",
                     style: TextStyle(
                       fontSize: 13,
                     ),
@@ -242,13 +268,13 @@ class ItemOrderList extends StatelessWidget {
                   SizedBox(
                     width: 5,
                   ),
-                  Text(
-                    "x1",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.black12,
-                    ),
-                  ),
+                  // Text(
+                  //   "x1",
+                  //   style: TextStyle(
+                  //     fontSize: 12,
+                  //     color: Colors.black12,
+                  //   ),
+                  // ),
                 ],
               ),
               SizedBox(
@@ -257,7 +283,7 @@ class ItemOrderList extends StatelessWidget {
               Row(
                 children: <Widget>[
                   Text(
-                    "Điện thoại iphone 7",
+                    "Bến xe 2",
                     style: TextStyle(
                       fontSize: 13,
                     ),
@@ -265,13 +291,13 @@ class ItemOrderList extends StatelessWidget {
                   SizedBox(
                     width: 5,
                   ),
-                  Text(
-                    "x2",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.black45,
-                    ),
-                  ),
+                  // Text(
+                  //   "x2",
+                  //   style: TextStyle(
+                  //     fontSize: 12,
+                  //     color: Colors.black45,
+                  //   ),
+                  // ),
                 ],
               ),
               SizedBox(
