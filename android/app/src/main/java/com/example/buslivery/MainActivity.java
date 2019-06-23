@@ -1,4 +1,4 @@
-package com.example.pobus;
+package com.example.buslivery;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

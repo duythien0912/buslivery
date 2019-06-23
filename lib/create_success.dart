@@ -107,6 +107,9 @@ class _CreateSuccessPageState extends State<CreateSuccessPage> {
                   },
                 ),
               ),
+              SizedBox(
+                height: 50,
+              ),
             ],
           ),
         ),
