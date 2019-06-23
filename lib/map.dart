@@ -184,7 +184,7 @@ class _MapWidgetState extends State<MapWidget> {
                                       height: 10,
                                     ),
                                     Text(
-                                      "10.000đ",
+                                      "10,000đ",
                                       style: TextStyle(
                                         color: Color.fromRGBO(
                                           37,

@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'main.dart';
+import 'model/bus_app_model.dart';
 
 class CreateSuccessPage extends StatefulWidget {
   const CreateSuccessPage({Key key}) : super(key: key);
@@ -99,7 +101,7 @@ class _CreateSuccessPageState extends State<CreateSuccessPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MyHomePage(),
+                        builder: (context) => MyHomePage(isshow: true),
                       ),
                     );
                   },

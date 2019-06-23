@@ -16,12 +16,12 @@ class CreateNewOrder extends StatelessWidget {
         leading: SafeArea(child: BackButton()),
         actions: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(10.0),
             child: FlatButton(
-              padding: const EdgeInsets.symmetric(
-                vertical: 0,
-                horizontal: 0,
-              ),
+              // padding: const EdgeInsets.symmetric(
+              //   vertical: 3,
+              //   horizontal: 3,
+              // ),
               color: Colors.yellow,
               child: Text(
                 'Next',

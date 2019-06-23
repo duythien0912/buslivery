@@ -44,19 +44,13 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
-
+  MyHomePage({Key key, this.isshow = false}) : super(key: key);
+  final bool isshow;
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Widget> _children = [
-    HomePage(),
-    OrderPage(),
-    UserPage(),
-  ];
-
   int _currentIndex = 0;
 
   void onTabTapped(int index) {
@@ -67,19 +61,27 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final BusAppAppModel busModel = Provider.of<BusAppAppModel>(context);
+    bool isshow = widget.isshow;
+    List<Widget> _children = [
+      HomePage(isshow: isshow),
+      OrderPage(),
+      UserPage(),
+    ];
 
     return Scaffold(
       body: _children[_currentIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          // final BusAppAppModel busModel = Provider.of<BusAppAppModel>(context);
+
+          // if (busModel.isShow == false) busModel.setShowBusItem(true);
+          // print(busModel.isShow);
           Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => CreateNewOrder(),
             ),
           );
-          busModel.setShowBusItem(true);
         },
         child: Icon(Icons.add),
       ),
@@ -114,7 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key key, this.isshow}) : super(key: key);
+  final bool isshow;
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +128,7 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: Container(
-                child: new ListOrder(),
+                child: new ListOrder(isshow: isshow),
                 height: double.infinity,
               ),
             ),
@@ -140,13 +143,13 @@ class ListOrder extends StatelessWidget {
   const ListOrder({
     Key key,
     this.isView = true,
+    this.isshow = false,
   }) : super(key: key);
   final bool isView;
+  final bool isshow;
 
   @override
   Widget build(BuildContext context) {
-    final BusAppAppModel busModel = Provider.of<BusAppAppModel>(context);
-
     return ListView(
       children: <Widget>[
         if (isView)
@@ -175,7 +178,8 @@ class ListOrder extends StatelessWidget {
             ),
             child: Image.asset("assets/qc.jpg"),
           ),
-        if (busModel.isShow == true)
+
+        if (isshow == true)
           ItemOrderList(isView: isView),
         // ItemOrderList(isView: isView),
         // ItemOrderList(isView: isView),
@@ -254,6 +258,10 @@ class ItemOrderList extends StatelessWidget {
                 height: 1,
                 color: Colors.black12,
               ),
+              SizedBox(
+                height: 5,
+              ),
+              if (!isView) Image.asset("assets/route.png"),
               SizedBox(
                 height: 5,
               ),
@@ -413,6 +421,7 @@ class OrderPage extends StatelessWidget {
                   children: [
                     ListOrder(
                       isView: false,
+                      isshow: true,
                     ),
                     Container(
                       padding: const EdgeInsets.only(
@@ -546,7 +555,7 @@ class OrderPage extends StatelessWidget {
                                   height: 5,
                                 ),
                                 Text(
-                                  "12,000đ - Ví VietNamPay",
+                                  "10,000đ - Ví VietNamPay",
                                   style: TextStyle(
                                     fontSize: 12,
                                   ),
